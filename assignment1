@@ -1,0 +1,34 @@
+1)SELECT f.title, f.rating,c.name FROM film f 
+JOIN film_category fc ON f.film_id = fc.film_id 
+JOIN category c ON fc.category_id = c.category_id 
+WHERE c.name = 'Comedy' AND f.rating = 'PG-13';
+
+
+2)SELECT fl.title,COUNT(fl.FID),fl.category FROM film_list fl 
+JOIN inventory i ON fl.FID=i.film_id 
+JOIN rental r ON i.inventory_id=r.rental_id WHERE fl.category='Horror'
+GROUP BY fl.FID ORDER BY COUNT(fl.FID) DESC LIMIT 3; 
+
+
+3)SELECT DISTINCT cl.name,cl.country,c.name FROM customer_list cl 
+JOIN rental r ON r.customer_id = cl.ID
+JOIN inventory i ON i.inventory_id = r. inventory_id 
+JOIN film_category fc ON fc.film_id = i.film_id
+JOIN category c ON fc.category_id = c.category_id
+WHERE cl.country = 'India' AND c.name = 'Sports';
+
+4)SELECT DISTINCT cl.name,cl.country,a.first_name,a.last_name FROM customer_list cl
+JOIN rental r ON r.customer_id = cl.ID
+JOIN inventory i ON i.inventory_id = r. inventory_id 
+JOIN film_actor fa ON fa.film_id = i.film_id
+JOIN actor a ON a.actor_id=fa.actor_id
+WHERE cl.country='Canada' AND a.first_name='NICK' AND a.last_name='WAHLBERG'; 
+
+5)SELECT COUNT(*) FROM film f JOIN film_actor fa ON f.film_id=fa.film_id 
+JOIN actor a ON fa.actor_id=a.actor_id 
+WHERE a.first_name='SEAN' AND a.last_name='WILLIAMS';
+
+
+
+
+
