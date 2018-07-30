@@ -1,7 +1,7 @@
 USE fooddelivery;
 
-INSERT INTO Orders VALUES(1,'2018-01-12','12:00','Special',1,2,1);
-INSERT INTO Orders VALUES(1,'2018-02-12','13:00','Normal',1,2,2);
+INSERT INTO Orders VALUES(1,'2018-01-12','12:00','Special',0,1,2,1);
+INSERT INTO Orders VALUES(1,'2018-02-12','13:00','Normal',1,1,2,2);
 
 INSERT INTO Customer VALUES(1,'Divy','abc@gmail.com','9452737116');
 INSERT INTO Customer VALUES(2,'Rohan','xyz@gmail.com','9452737117');

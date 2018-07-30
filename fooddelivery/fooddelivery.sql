@@ -7,6 +7,7 @@ USE fooddelivery;
   orderdate VARCHAR(45),
   ordertime VARCHAR(45),
   billdetails VARCHAR(45),
+  status INT,
   DeliveryPerson_DID INT NOT NULL REFERENCES DeliveryPerson(DID) ON DELETE NO ACTION ON UPDATE CASCADE,
   Restaurant_restID INT NOT NULL REFERENCES Restaurant(restID) ON DELETE NO ACTION ON UPDATE CASCADE,
   Customer_custID INT NOT NULL REFERENCES Customer(custID) ON DELETE NO ACTION ON UPDATE CASCADE);
@@ -29,3 +30,17 @@ USE fooddelivery;
   DID INT NOT NULL PRIMARY KEY,
   Name VARCHAR(45),
   contactno VARCHAR(45));
+
+  DELIMITER ///
+
+CREATE TRIGGER check_for_multipleorders BEFORE INSERT ON Order FOR EACH ROW
+BEGIN
+IF ((SELECT Orders.orderID
+   FROM Order
+   WHERE  custID = NEW.custID AND status=0) is not null)
+THEN
+  UPDATE Customer SET custID = NULL WHERE custID = NEW.custID;
+  END IF;
+END;
+///
+DELIMITER ;
