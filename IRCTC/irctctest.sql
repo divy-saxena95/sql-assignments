@@ -1,8 +1,8 @@
 USE irctc;
 
-INSERT INTO Ticket VALUES('2018-12-01','Bengaluru','Hyderabad',true,1,2,1434);
-INSERT INTO Ticket VALUES('2018-12-01','Delhi','Dehradun',false,2,2,1433);
-INSERT INTO Ticket VALUES('2018-12-01','Dehradun','Nainital',true3,3,1434);
+INSERT INTO Ticket VALUES('2018-12-01','Bengaluru','Hyderabad',1,'2008-11-11 13:23:44','2008-11-12 13:45:21',1,2,1434);
+INSERT INTO Ticket VALUES('2018-12-01','Delhi','Dehradun',0,'2008-10-10 15:45:21','2008-10-10 19:45:21'2,2,1433);
+INSERT INTO Ticket VALUES('2018-12-01','Dehradun','Nainital',1,'2018-07-09 15:45:21','2018-07-10 15:45:21'3,3,1434);
 
 
 INSERT INTO TRAIN VALUES(1432,'Shatabdi','24hrs','wed');

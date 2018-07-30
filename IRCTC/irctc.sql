@@ -6,6 +6,8 @@ CREATE TABLE IF NOT EXISTS Ticket (
   destination VARCHAR(45) ,
   source VARCHAR(45) ,
   reserved BOOLEAN ,
+  arrival DATETIME,
+  departure DATETIME,
   ticketno INT NOT NULL PRIMARY KEY,
   Customer_CustomerID INT NOT NULL REFERENCES Customer(CustomerID) ON DELETE NO ACTION ON UPDATE CASCADE,
   TRAIN_Trainno INT NOT NULL REFERENCES TRAIN(Trainno) ON DELETE SET NULL);
@@ -29,8 +31,8 @@ CREATE TABLE IF NOT EXISTS Customer (
 CREATE TRIGGER reserved_or_unreserved BEFORE INSERT ON Ticket
   FOR EACH ROW
   BEGIN
-    IF((SELECT trainno FROM TRAIN WHERE TRAIN.CustomerID = Ticket.CustomerID) IS NULL)
-    THEN UPDATE Ticket SET Ticket.reserved = 0 WHERE TRAIN.CustomerID = Ticket.CustomerID;
+    IF((SELECT trainno FROM TRAIN WHERE TRAIN.CustomerID = Ticket.CustomerID) IS NULL AND Ticket.arrival > NEW.departure)
+    THEN UPDATE Ticket SET Ticket.reserved = 0,Ticket.ticketno=NULL WHERE TRAIN.CustomerID = Ticket.CustomerID;
   END IF;
   END;
 |
