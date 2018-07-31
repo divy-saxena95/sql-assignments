@@ -1,7 +1,7 @@
 CREATE DATABASE IF NOT EXISTS fooddelivery;
 USE fooddelivery;
 
-
+/*weak entity*/
   CREATE TABLE IF NOT EXISTS Orders(
   orderID INT NOT NULL PRIMARY KEY,
   orderdate VARCHAR(45),
@@ -12,12 +12,14 @@ USE fooddelivery;
   Restaurant_restID INT NOT NULL REFERENCES Restaurant(restID) ON DELETE NO ACTION ON UPDATE CASCADE,
   Customer_custID INT NOT NULL REFERENCES Customer(custID) ON DELETE NO ACTION ON UPDATE CASCADE);
   
+/*strong entity*/
   CREATE TABLE IF NOT EXISTS Customer(
   custID INT NOT NULL PRIMARY KEY,
   custName VARCHAR(45) ,
   email VARCHAR(45),
   contactno VARCHAR(45));
 
+/*strong entity*/
   CREATE TABLE IF NOT EXISTS Restaurant(
   restID INT NOT NULL PRIMARY KEY,
   RestName VARCHAR(45) ,
@@ -25,7 +27,7 @@ USE fooddelivery;
   contactno VARCHAR(45));
  
 
-
+/*strong entity*/
   CREATE TABLE IF NOT EXISTS DeliveryPerson(
   DID INT NOT NULL PRIMARY KEY,
   Name VARCHAR(45),

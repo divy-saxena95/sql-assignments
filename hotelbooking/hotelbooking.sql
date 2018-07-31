@@ -1,6 +1,6 @@
 CREATE DATABASE IF NOT EXISTS hotelbooking;
 USE hotelbooking;
-
+/* weak entity*/
 CREATE TABLE IF NOT EXISTS booking(
   bookingID INT NOT NULL PRIMARY KEY,
   price VARCHAR(45),
@@ -11,7 +11,7 @@ CREATE TABLE IF NOT EXISTS booking(
   hotel_hotelid INT NOT NULL REFERENCES hotel(hotelid) ON DELETE NO ACTION ON UPDATE CASCADE);
 
 
-
+/*strong entity*/
 CREATE TABLE IF NOT EXISTS customer (
   custID INT NOT NULL PRIMARY KEY,
   name VARCHAR(45) ,
@@ -20,7 +20,7 @@ CREATE TABLE IF NOT EXISTS customer (
   username VARCHAR(45),
   LOYAL BOOLEAN);
 
-
+/*strong entity*/
 CREATE TABLE IF NOT EXISTS hotel (
   hotelid INT NOT NULL,
   name VARCHAR(45),

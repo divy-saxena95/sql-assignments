@@ -1,6 +1,6 @@
 CREATE DATABASE IF NOT EXISTS irctc;
 USE irctc;
-
+/*weak entity*/
 CREATE TABLE IF NOT EXISTS Ticket (
   Issue VARCHAR(45) ,
   destination VARCHAR(45) ,
@@ -11,13 +11,13 @@ CREATE TABLE IF NOT EXISTS Ticket (
   ticketno INT NOT NULL PRIMARY KEY,
   Customer_CustomerID INT NOT NULL REFERENCES Customer(CustomerID) ON DELETE NO ACTION ON UPDATE CASCADE,
   TRAIN_Trainno INT NOT NULL REFERENCES TRAIN(Trainno) ON DELETE SET NULL);
-
+/*strong entity*/
 CREATE TABLE IF NOT EXISTS TRAIN (
   Trainno INT NOT NULL PRIMARY KEY,
   Trainname VARCHAR(45),
   RunningDuration VARCHAR(45),
   runningdays VARCHAR(45));
-
+/*strong entity*/
 CREATE TABLE IF NOT EXISTS Customer (
   CustomerID INT NOT NULL PRIMARY KEY,
   Name VARCHAR(45),
