@@ -7,15 +7,15 @@ CREATE TABLE IF NOT EXISTS items (
   name VARCHAR(45),
   price VARCHAR(45),
   supplier_supplierID INT NOT NULL REFERENCES supplier(supplierID) ON DELETE NO ACTION ON UPDATE CASCADE,
-  order_orderID INT NOT NULL REFERENCES orders(orderID) ON DELETE NO ACTION ON UPDATE CASCADE,
-  customer_customerID INT NOT NULL REFERENCES customer(customerID) ON DELETE NO ACTION ON UPDATE CASCADE);
+  order_orderID INT NOT NULL REFERENCES orders(orderID) ON DELETE NO ACTION ON UPDATE CASCADE);
 
 /*strong entity*/
 CREATE TABLE IF NOT EXISTS orders (
   orderID INT NOT NULL PRIMARY KEY,
   OrderDate VARCHAR(45),
   ShippedDate VARCHAR(45),
-  ShipVia VARCHAR(45) NULL);
+  ShipVia VARCHAR(45) NULL,
+customer_customerID INT NOT NULL REFERENCES customer(customerID) ON DELETE NO ACTION ON UPDATE CASCADE);
 
 /*strong entity*/
 CREATE TABLE IF NOT EXISTS customer (
