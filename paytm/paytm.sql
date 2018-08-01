@@ -12,13 +12,14 @@ CREATE TABLE IF NOT EXISTS accounts(
   type VARCHAR(45),
   balance VARCHAR(45),
   branches_branchID INT NOT NULL REFERENCES branches(branchID) ON DELETE SET NULL ON UPDATE CASCADE);
-/* strong entity*/
+/* weak entity*/
 CREATE TABLE IF NOT EXISTS customer (
   customerID INT NOT NULL PRIMARY KEY,
   name VARCHAR(45),
   cust_type VARCHAR(45),
   contactno VARCHAR(45),
   accounts_acct_number INT NOT NULL REFERENCES accounts(acct_number) ON DELETE SET NULL ON UPDATE CASCADE);
+
 
 DELIMITER ///
 

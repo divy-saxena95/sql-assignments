@@ -9,7 +9,7 @@ CREATE TABLE IF NOT EXISTS items (
   supplier_supplierID INT NOT NULL REFERENCES supplier(supplierID) ON DELETE NO ACTION ON UPDATE CASCADE,
   order_orderID INT NOT NULL REFERENCES orders(orderID) ON DELETE NO ACTION ON UPDATE CASCADE);
 
-/*strong entity*/
+/*weak entity*/
 CREATE TABLE IF NOT EXISTS orders (
   orderID INT NOT NULL PRIMARY KEY,
   OrderDate VARCHAR(45),
@@ -21,7 +21,8 @@ customer_customerID INT NOT NULL REFERENCES customer(customerID) ON DELETE NO AC
 CREATE TABLE IF NOT EXISTS customer (
   customerID INT NOT NULL PRIMARY KEY,
   firstname VARCHAR(45),
-  lastname VARCHAR(45));
+  lastname VARCHAR(45),
+ordertime DATETIME NOT NULL UNIQUE);
 
 /*strong entity*/
 CREATE TABLE IF NOT EXISTS supplier (
